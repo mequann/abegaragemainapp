@@ -24,10 +24,16 @@ const login = async (formData) => {
         console.log(error)
     }
 }
+//function to handdle the logout
+const logOut=()=>{
+    localStorage.removeItem("employee")
+}
+
 //export function login
 
 module.exports = {
     login,
+    logOut
 };
 
 

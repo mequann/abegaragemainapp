@@ -1,3 +1,4 @@
+//function to read data from local stirage
 const employeeAuthHeader=async()=>{
     const employee=await JSON.parse(localStorage.getItem('employee'))
     // console.log(employee)

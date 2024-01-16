@@ -80,12 +80,57 @@ const query = `
     const rows = await conn.executeQuery(query, [employee_email]);
     return rows;
 };
+// a function to get the emmployees
+const getEmployees = async () => {
+    //write query with inner jion  with all tables
+    const query = `
+        SELECT * 
+        FROM employee
+        INNER JOIN employee_info ON employee.employee_id = employee_info.employee_id
+        INNER JOIN employee_pass ON employee.employee_id = employee_pass.employee_id
+        INNER JOIN employee_role ON employee.employee_id = employee_role.employee_id
+    `;
+    const rows = await conn.executeQuery(query);
+    return rows;
+};
+//  a function to getsingle employye
+const getSingleEmployee = async (employee_id) => {
+
+    const query = `
+        SELECT * 
+        FROM employee
+        INNER JOIN employee_info ON employee.employee_id = employee_info.employee_id
+        INNER JOIN employee_pass ON employee.employee_id = employee_pass.employee_id
+        INNER JOIN employee_role ON employee.employee_id = employee_role.employee_id
+        WHERE employee.employee_id = ?
+    `;
+    const rows = await conn.executeQuery(query, [employee_id]);
+    return rows;
+}
+//function to update employee first name last name email password  fileds
+const updateEmployee = async (employee_id,employee) => {
+
+    const query = `
+        UPDATE employee_info
+        SET employee_first_name = ?, employee_last_name = ?, employee_phone = ?
+        WHERE employee_id = ?
+    `;
+    const rows = await conn.executeQuery(query, [employee.employee_first_name,employee.employee_last_name,employee.employee_phone,employee_id]);
+    return rows;
+    
+}
+
+
+
 
 
 //export the functions
 module.exports = {
     checIfEmployeeExists,
     createEmployee,
-    getEmployeeByEmail
+    getEmployeeByEmail,
+   getEmployees,
+   getSingleEmployee,
+   updateEmployee
 
 };

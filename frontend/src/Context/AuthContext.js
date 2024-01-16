@@ -1,11 +1,11 @@
-import React,{useContext,useEffect,useState,createContext} from 'react'
+import React,{useEffect,useState,createContext, useContext} from 'react'
 //import the authHeader
 import authHeader from '../util/auth.header';
 //create the authprovider
 export const AuthContext = createContext();
 //create the authprovider component
-//create  custom hook
-// export const useAuth=useContext(AuthContext)
+//create  custom  hook to use the context
+export const useAuth= ()=>{return useContext(AuthContext)}
 export function AuthProvider({children}) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAmin] = useState(false);
@@ -20,13 +20,13 @@ export function AuthProvider({children}) {
 
         console.log(logedInEmployee)
         logedInEmployee.then(response=>{
-            console.log(response,1122)
+            console.log(response)
             if(response.employee_token){
                 setIsLoggedIn(true)
                 
                 
             }
-            console.log(response.employee_role)
+            // console.log(response.employee_role)
             console.log(response.employee_first_name)
             //3 is the emolpyee_role for admin
             if(response.employee_role===3){
@@ -34,7 +34,7 @@ export function AuthProvider({children}) {
             }
             //if the response is not empty set the employee
             if(response){
-                setEmployee(response.employee_first_name)
+                setEmployee(response)
             }
         })
       }, []);

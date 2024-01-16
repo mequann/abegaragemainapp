@@ -24,6 +24,7 @@ const options = {
   optionSuccessStatus: 200,
 };
 //add cors
+// app.use(cors(options));   this is not working will be fixed latter
 app.use(cors());
 
 //create a varaible to hold port number
