@@ -1,6 +1,9 @@
 import React, { useState,useNavigate } from 'react'
 //import login service
 import loginService from "../../../../services/login.service";
+//import uselocation hook
+import { useLocation } from 'react-router-dom';
+
 
 const LoginForm = () => {
     const [employee_email, setEmployeeEmail] = useState("");
@@ -8,6 +11,7 @@ const LoginForm = () => {
     const [serverError, setServerError] = useState("");
     const [EmailErr, SetEmaillError] = useState("");
     const [PasswordErr, setPasswordError] = useState("");
+    const location = useLocation();
     const Navigate=useNavigate()
 
     const handleSubmit =  (event) => {

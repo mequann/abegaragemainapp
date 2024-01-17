@@ -18,6 +18,7 @@ const AddEmployeeForm = () => {
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
   // console.log(employee_first_name);
+  console.log(company_role_id)
 
   //function to handdleSubmit
   const handleSubmit = async (event) => {

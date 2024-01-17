@@ -26,7 +26,7 @@ export function AuthProvider({children}) {
                 
                 
             }
-            // console.log(response.employee_role)
+            console.log(response.employee_role)
             console.log(response.employee_first_name)
             //3 is the emolpyee_role for admin
             if(response.employee_role===3){

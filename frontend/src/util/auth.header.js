@@ -8,7 +8,8 @@ const employeeAuthHeader=async()=>{
         const decodedToken= await decodeTokenPayload(employee.employee_token)
         employee.employee_first_name=decodedToken.employee_first_name;
         // console.log(employee.employee_first_name)
-        employee.employee_role=decodedToken.company_role_id;
+        employee.employee_role=decodedToken.employee_role;
+        console.log()
         employee.employee_id=decodedToken.employee_id;
         return employee
  }

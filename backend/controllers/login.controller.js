@@ -28,10 +28,10 @@ async function login(req, res,next) {
             const payload={
                 employee_id:employee.data.employee_id, 
                 employee_email:employee.data.employee_email,
-                company_role_id:employee.data.company_role_id,
+                employee_role:employee.data.company_role_id,
                 employee_first_name:employee.data.employee_first_name
             }
-            console.log(payload)
+            // console.log(payload,'payload')
             //sign token
             const token = jwt.sign(payload, secretKey, { expiresIn: '24h' });
             console.log(token)
