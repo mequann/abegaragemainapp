@@ -58,20 +58,20 @@ function App() {
         />
         {/*add employees route */}
 
-        <Route
+        {/* <Route
           path="/admin/employees"
           element={
            <Employees />}
-          />
-          {/* this is to impliment the authorization in an other way  at the component that is why I comenent the protected route*/}
-        {/* <Route
+          /> */}
+          {/*This  aims to implement authorization using widely recognized techniques for securing routes*/}
+        <Route
           path="/admin/employees"
           element={
             <PrivateAuthRoute roles={[2, 3]}>
               <Employees />
             </PrivateAuthRoute>
           }
-        /> */}
+        />
 
         {/*
            -Orders (/admin/orders) - Can be accessed by all employees  

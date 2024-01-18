@@ -4,8 +4,10 @@ const express = require('express');
 const router = express.Router();
 //import employee controller
 const employeeController = require('../controllers/employee.controller');
+//import the authMiddleWare
+const authMiddleWare = require('../middlewares/auth.middleware');
 //create post route
-router.post('/api/employee', employeeController.createEmployee);
+router.post('/api/employee',[authMiddleWare.verifiedToken,authMiddleWare.isAdmin] ,employeeController.createEmployee);
 //create get request route to get employees
 router.get('/api/employees', employeeController.getEmployees);
 //get request to for single imployee

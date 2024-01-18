@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 //import the employeeService
 import employeeService from "../../../../services/employee.service";
+//import useauth hook
+import { useAuth } from "../../../../Context/AuthContext";
 
 const AddEmployeeForm = () => {
   //usestate hook to hold values of input fields employee_email,employee_first_name,employee_password,active_employee,company_role_id
@@ -18,7 +20,14 @@ const AddEmployeeForm = () => {
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
   // console.log(employee_first_name);
-  console.log(company_role_id)
+  // console.log(company_role_id)
+  //variable to hold the user's token
+  let loggedEmployeeToken=''
+  //destructure the useauth hook and get the token
+  const { employee } = useAuth();
+  if(employee&&employee.employee_token){
+    loggedEmployeeToken=employee.employee_token
+  }
 
   //function to handdleSubmit
   const handleSubmit = async (event) => {
@@ -74,7 +83,7 @@ const AddEmployeeForm = () => {
         company_role_id,
       };
       //pass the formData to service
-      const newEmployee = await employeeService.createEmployee(formData);
+      const newEmployee = await employeeService.createEmployee(formData,loggedEmployeeToken);
       // console.log(newEmployee)
       const data = await newEmployee.json();
       console.log(data);
