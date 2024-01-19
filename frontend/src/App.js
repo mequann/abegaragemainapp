@@ -58,20 +58,20 @@ function App() {
         />
         {/*add employees route */}
 
-        {/* <Route
-          path="/admin/employees"
-          element={
-           <Employees />}
-          /> */}
-          {/*This  aims to implement authorization using widely recognized techniques for securing routes*/}
         <Route
           path="/admin/employees"
           element={
-            <PrivateAuthRoute roles={[2, 3]}>
+           <Employees />}
+          />
+          {/*This  aims to implement authorization using widely recognized techniques for securing routes*/}
+        {/* <Route
+          path="/admin/employees"
+          element={
+            <PrivateAuthRoute roles={[3]}>
               <Employees />
             </PrivateAuthRoute>
           }
-        />
+        /> */}
 
         {/*
            -Orders (/admin/orders) - Can be accessed by all employees  

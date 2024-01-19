@@ -2,7 +2,11 @@ import React from 'react'
 //import the useauth hook
 import { useAuth } from './../../../Context/AuthContext';
 //import the loginform
-import LoginForm from './../../components/admin/LoginForm/LoginForm';
+import LoginForm from '../../components/admin/LoginForm/LoginForm';
+//import adminMenu
+import AdminMenu from '../../components/admin/AdminMenu/AdminMenu';
+//import employeelist
+import EmployeeList from '../../components/admin/EmployeeList/EmployeeList'
 
 const Employess = () => {
   const {isLoggedIn,isAdmin} = useAuth();
@@ -10,7 +14,24 @@ const Employess = () => {
     if(isAdmin)
     {
       return (
-        <div><h1>Employess</h1></div>
+        <div>
+          <div className="container-fluid admin-pages">
+            <div className="row">
+              <div className="col-md-3 admin-left-side">
+
+                <AdminMenu />
+
+              </div>
+              <div className="col-md-9 admin-right-sied">
+
+                <EmployeeList />
+
+              </div>
+            </div>
+
+          </div>
+      
+        </div>
       )}
     else{
       return (

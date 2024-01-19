@@ -9,7 +9,7 @@ const authMiddleWare = require('../middlewares/auth.middleware');
 //create post route
 router.post('/api/employee',[authMiddleWare.verifiedToken,authMiddleWare.isAdmin] ,employeeController.createEmployee);
 //create get request route to get employees
-router.get('/api/employees', employeeController.getEmployees);
+router.get('/api/employees', [authMiddleWare.verifiedToken,authMiddleWare.isAdmin] ,employeeController.getEmployees);
 //get request to for single imployee
 router.get('/api/employee/:id', employeeController.getSingleEmployee);
 //route to update employee

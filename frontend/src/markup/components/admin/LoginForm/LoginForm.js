@@ -12,7 +12,7 @@ const LoginForm = () => {
     const [EmailErr, SetEmaillError] = useState("");
     const [PasswordErr, setPasswordError] = useState("");
     const location = useLocation();
-    const Navigate=useNavigate()
+    // const Navigate=useNavigate()
 
     const handleSubmit =  (event) => {
         event.preventDefault();
