@@ -24,6 +24,7 @@ import "./assets/styles/custom.css";
 import Header from "./markup/components/Header/Header";
 import Footer from "./markup/components/Footer/Footer";
 import PrivateAuthRoute from "./markup/components/Auth/PrivateAuthRoute";
+import EmployeeEdit from "./markup/components/admin/update/EmployeeEdit";
 
 function App() {
   return (
@@ -86,10 +87,22 @@ function App() {
             </PrivateAuthRoute>
           }
         />
+         <Route
+          path="/admin/edit"
+          element={
+            <PrivateAuthRoute roles={[3]}>
+              <EmployeeEdit />
+            </PrivateAuthRoute>
+          }
+        />
+         
         <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="*" element={<NotFound />} />
+       
       </Routes>
       <Footer />
+
+
     </div>
   );
 }

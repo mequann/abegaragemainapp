@@ -9,8 +9,9 @@ const employeeAuthHeader=async()=>{
         employee.employee_first_name=decodedToken.employee_first_name;
         // console.log(employee.employee_first_name)
         employee.employee_role=decodedToken.employee_role;
-        console.log()
+        // console.log()
         employee.employee_id=decodedToken.employee_id;
+        employee.employee_email=decodedToken.employee_email
         return employee
  }
     else{

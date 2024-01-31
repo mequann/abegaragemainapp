@@ -35,7 +35,8 @@ const isAdmin = async(req,res,next)=>{
     const employee_email=req.employee_email
     const employee=await  employeeService.getEmployeeByEmail(employee_email)
     // console.log(employee,'from middle')
-    if(employee[0].employee_role===3){
+    // console.log(employee[0].    company_role_id)
+    if(employee[0].    company_role_id===3){
         next()
 
     }

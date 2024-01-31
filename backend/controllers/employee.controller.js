@@ -47,10 +47,11 @@ const getEmployees = async (req, res, next) => {
     if (employees) {
       res.status(200).json({
         message: "Employees fetched successfully",
+        status:"success",
         data: employees,
       });
       //else
-    } else {
+    } else { 
       res.status(404).json({
         error: "No employees found",
       });

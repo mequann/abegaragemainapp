@@ -8,9 +8,9 @@ export const AuthContext = createContext();
 export const useAuth= ()=>{return useContext(AuthContext)}
 export function AuthProvider({children}) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isAdmin, setIsAmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [employee, setEmployee] = useState(null);
-    const value={isLoggedIn,isAdmin,setIsAmin,setIsLoggedIn,employee,setEmployee};
+    const value={isLoggedIn,isAdmin,setIsAdmin,setIsLoggedIn,employee,setEmployee};
    console.log(employee)
 
 //define useEffect function  
@@ -26,11 +26,11 @@ export function AuthProvider({children}) {
                 
                 
             }
-            console.log(response.employee_role)
-            console.log(response.employee_first_name)
+            // console.log(response.employee_role)
+            // console.log(response.employee_first_name)
             //3 is the emolpyee_role for admin
             if(response.employee_role===3){
-                setIsAmin(true)
+                setIsAdmin(true)
             }
             //if the response is not empty set the employee
             if(response){
