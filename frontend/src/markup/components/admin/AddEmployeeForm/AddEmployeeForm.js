@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import employeeService from "../../../../services/employee.service";
 //import useauth hook
 import { useAuth } from "../../../../Context/AuthContext";
+import { useLocation } from "react-router";
 
 const AddEmployeeForm = () => {
   //usestate hook to hold values of input fields employee_email,employee_first_name,employee_password,active_employee,company_role_id
@@ -19,6 +20,7 @@ const AddEmployeeForm = () => {
   const [PasswordErr, setPasswordError] = useState("");
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
+  // const location=useLocation()
   // console.log(employee_first_name);
   // console.log(company_role_id)
   //variable to hold the user's token
@@ -109,6 +111,7 @@ const AddEmployeeForm = () => {
         error.toString();
       setServerError(resMessage);
     }
+    window.location.reload();
   };
 
   return (

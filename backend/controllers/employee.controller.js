@@ -93,7 +93,7 @@ const updateEmployee = async (req, res, next) => {
   try {
     const employeeId = req.params.update_id;
     const employeeData = req.body;
-    console.log(employeeData,'pppp')
+    // console.log(employeeData,'pppp')
     const employee = await employeeService.updateEmployee(
       employeeId,
       employeeData
@@ -115,6 +115,28 @@ const updateEmployee = async (req, res, next) => {
     })
   }
 }
+//function to delate employee
+const deleteEmployee = async (req, res, next) => {
+  try {
+    const employeeId = req.params.id;
+    const employee = await employeeService.deleteEmployee(employeeId);
+    if (employee) {
+      res.status(200).json({
+        message: "Employee deleted successfully",
+      });
+    } else {
+      res.status(404).json({
+        error: "Employee not found",
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({
+      error: "Something went wrong! from delete",
+    });
+  }
+};
+
 
 //export the controller function
 module.exports = {
@@ -122,5 +144,6 @@ module.exports = {
   getEmployees,
   getSingleEmployee,
   updateEmployee,
+  deleteEmployee,
   
 };

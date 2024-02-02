@@ -133,6 +133,16 @@ const updateEmployee = async (employee_id, employee) => {
   ]);
   return rows;
 };
+// function to delete imployee
+const deleteEmployee = async (employee_id) => {
+  const query = `
+        DELETE FROM employee
+        WHERE employee_id = ?
+    `;
+  const rows = await conn.executeQuery(query, [employee_id]);
+  return rows;
+};
+
 
 //export the functions
 module.exports = {
@@ -142,4 +152,5 @@ module.exports = {
   getEmployees,
   getSingleEmployee,
   updateEmployee,
+  deleteEmployee,
 };

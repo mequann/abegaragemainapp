@@ -4,16 +4,19 @@ import { useAuth } from '../../../../Context/AuthContext';
 import { useNavigate } from 'react-router';
 import employeeService from '../../../../services/employee.service';
 const EmployeeEdit = () => {
-  const [fname,setFname]=useState([])
-  const [lname,setLname]=useState([])
+  const [fname,setFname]=useState('')
+  const [lname,setLname]=useState('')
   // const [email,setEmail]=useState([])
-  const [phone,setPhone]=useState([])
+  const [phone,setPhone]=useState('')
   // const [password,setPassword]=useState('')
   const [role,setRole]=useState('')
   const [active,setActive]=useState('')
   const [isActive, setIsActive] = useState(false);
   const[isUpdate,setIsUpdate]=useState(false)
-  const Nanigate=useNavigate()
+  const[editedId,setEditedId]=useState('')
+  console.log(role)
+
+  const Navigate=useNavigate()
 
     const {employee}=useAuth()
 // console.log(employee?.employee_first_name)
@@ -26,9 +29,9 @@ useEffect(()=>{
   const allEmployees=employeeService.getAllEmployees()
 
 },[])
-const handleUdate=(id) =>{
+const handleUdate=() =>{
 // e.preventDefualt()
-  if(id===employee.employee_id){
+  // if(id===employee.employee_id){
     const data={
       employee_first_name:fname,
       employee_last_name:lname,
@@ -41,9 +44,7 @@ const handleUdate=(id) =>{
     }
 
     const updateDValue={
-      
-      
-    method:'PUT',
+      method:'PUT',
     headers:{
       'Accept':'application/json',
       'Content-Type':'application/json'
@@ -52,19 +53,23 @@ const handleUdate=(id) =>{
     body:JSON.stringify(data)
       
     }
-    const api_url=`http://localhost:8000/api/employee/${id}`
+    const api_url=`http://localhost:8000/api/employee/${editedId}`
     const res=fetch(api_url,updateDValue)
     res.then(res=>console.log(res))
-setIsUpdate(true)
+// setIsUpdate(true)
 
     }
-if(isUpdate){
-  Nanigate('/admin/employees')
-}
-    }
+// if(isUpdate){
+//   Navigate('/admin/employees')
+// }
+    // }
 
   
-
+    // const handlePencilClick=(id)=>{
+    //   setEditedId(id)
+    //   Navigate('/admin/edit')
+    //   console.log(id)
+    // }
     
 
   return (
@@ -89,7 +94,7 @@ if(isUpdate){
                           name="employee_first_name"
                           value={fname}
                           placeholder="Employee first name"
-                        onChange={e=>setFname([...fname,e.target.value])}
+                        onChange={e=>setFname(e.target.value)}
                         />
                       </div>
                       <div className="form-group col-md-12">
@@ -98,7 +103,7 @@ if(isUpdate){
                           value={lname}
                           name="employee_last_name"
                           placeholder="Employee last name"
-                        onChange={e=>setLname([e.target.value])}
+                        onChange={e=>setLname(e.target.value)}
                      
                         />
                       </div>
@@ -108,13 +113,15 @@ if(isUpdate){
                           value={phone}
                           name="employee_phone"
                           placeholder="Employee phone (555-555-5555)"
-                        onChange={e=>setPhone([e.target.value])}
+                        onChange={e=>setPhone(e.target.value)}
                         />
                       </div>
                       <div className="form-group col-md-12">
                         <select
                           name="employee_role"
                           className="custom-select-box"
+                          value={role}
+                          onChange={(e)=>setRole(e.target.value)}
                         
                         >
                           <option value="1">Employee</option>
