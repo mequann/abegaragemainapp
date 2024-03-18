@@ -5,7 +5,7 @@ import employeeService from "../../../../services/employee.service";
 import { useAuth } from "../../../../Context/AuthContext";
 import { useLocation } from "react-router";
 
-const AddEmployeeForm = () => {
+const AddEmployeeForm = ({onUpdate}) => {
   //usestate hook to hold values of input fields employee_email,employee_first_name,employee_password,active_employee,company_role_id
   const [employee_email, setEmployeeEmail] = useState("");
   const [employee_first_name, setEmployeeFirstName] = useState("");
